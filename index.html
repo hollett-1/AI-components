@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product icon gen</title>
+  <script src="./tailwind.js"></script>
+  <script src="./html-to-image.js"></script>
+  <script src="./gif.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Google Sans Text', 'sans-serif'],
+            display: ['Google Sans Flex', 'sans-serif'],
+            mono: ['Google Sans Mono', 'monospace'],
+          },
+          colors: {
+            surface: 'var(--surface)',
+            'surface-container': 'var(--surface-container)',
+            'surface-container-low': 'var(--surface-container-low)',
+            'surface-container-high': 'var(--surface-container-high)',
+            primary: 'var(--primary)',
+            'on-primary': 'var(--on-primary)',
+            'primary-container': 'var(--primary-container)',
+            'on-primary-container': 'var(--on-primary-container)',
+            outline: 'var(--outline)',
+            'outline-variant': 'var(--outline-variant)',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <!-- Fonts: Google Sans Flex, Text, Mono, and Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wdth,wght@50..150,100..1000&family=Google+Sans+Text:wght@400;500;700&family=Google+Sans+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    rel="stylesheet" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" crossorigin="anonymous">
+  <style>
+    /* Custom Scrollbar Hiding */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Subtle Scrollbar for Controls */
+    .subtle-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: var(--outline-variant) transparent;
+    }
+
+    .subtle-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .subtle-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .subtle-scrollbar::-webkit-scrollbar-thumb {
+      background-color: var(--outline-variant);
+      border-radius: 20px;
+    }
+
+    .subtle-scrollbar::-webkit-scrollbar-thumb:hover {
+      background-color: var(--outline);
+    }
+
+    /* Material 3 Slider Styling */
+    .m3-range {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    /* Track */
+    .m3-range::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4px;
+      background: var(--primary-container);
+      border-radius: 999px;
+    }
+
+    .m3-range::-moz-range-track {
+      width: 100%;
+      height: 4px;
+      background: var(--primary-container);
+      border-radius: 999px;
+    }
+
+    /* Thumb */
+    .m3-range::-webkit-slider-thumb {
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      -webkit-appearance: none;
+      margin-top: -8px;
+      /* Center on track */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .m3-range::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 0 8px color-mix(in srgb, var(--primary) 12%, transparent);
+    }
+
+    .m3-range::-webkit-slider-thumb:active {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 10px color-mix(in srgb, var(--primary) 12%, transparent);
+    }
+
+    .m3-range::-moz-range-thumb {
+      height: 20px;
+      width: 20px;
+      border: none;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .m3-range::-moz-range-thumb:hover {
+      box-shadow: 0 0 0 8px color-mix(in srgb, var(--primary) 12%, transparent);
+    }
+
+    body {
+      font-family: 'Google Sans Text', sans-serif;
+    }
+
+    /* Sharp blinking cursor for Material 3 input feel */
+    @keyframes m3-blink {
+
+      from,
+      to {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .animate-m3-blink {
+      animation: m3-blink 1s step-end infinite;
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+</body>
+
+</html>
